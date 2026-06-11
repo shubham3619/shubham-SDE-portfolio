@@ -1,70 +1,60 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'class',
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Roboto Slab', 'Inter', 'system-ui', 'serif'],
-        heading: ['Roboto Slab', 'Inter', 'serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
-        display: ['Roboto Slab', 'Inter', 'serif'],
-      },
       colors: {
-        primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+        // Dark-first engineer palette. CSS vars are space-separated RGB
+        // channels (defined in index.css) so /opacity modifiers work.
+        bg: "rgb(var(--bg) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        elevated: "rgb(var(--elevated) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        text: {
+          DEFAULT: "rgb(var(--text) / <alpha-value>)",
+          muted: "rgb(var(--text-muted) / <alpha-value>)",
+          faint: "rgb(var(--text-faint) / <alpha-value>)",
         },
-        dark: {
-          bg: '#0d1117',
-          surface: '#161b22',
-          border: '#30363d',
-          text: '#c9d1d9',
-          textMuted: '#8b949e',
+        accent: {
+          DEFAULT: "rgb(var(--accent) / <alpha-value>)",
+          dim: "rgb(var(--accent-dim) / <alpha-value>)",
         },
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-mesh': 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%)',
-        'net-pattern': `
-          linear-gradient(rgba(14, 165, 233, 0.1) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(14, 165, 233, 0.1) 1px, transparent 1px)
-        `,
-        'net-pattern-dark': `
-          linear-gradient(rgba(139, 148, 158, 0.1) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(139, 148, 158, 0.1) 1px, transparent 1px)
-        `,
+      fontFamily: {
+        sans: ["Geist", "Inter", "system-ui", "sans-serif"],
+        mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
       },
-      backgroundSize: {
-        'net': '50px 50px',
+      fontSize: {
+        // tighter, editorial scale
+        "display": ["clamp(3rem, 8vw, 6.5rem)", { lineHeight: "0.95", letterSpacing: "-0.04em" }],
+        "h1": ["clamp(2.25rem, 5vw, 4rem)", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
+        "h2": ["clamp(1.75rem, 3.5vw, 2.75rem)", { lineHeight: "1.08", letterSpacing: "-0.02em" }],
       },
-      animation: {
-        'gradient': 'gradient 15s ease infinite',
-        'shimmer': 'shimmer 2s linear infinite',
+      maxWidth: {
+        content: "72rem",
+        prose: "44rem",
+      },
+      borderRadius: {
+        card: "16px",
+      },
+      transitionTimingFunction: {
+        "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "in-out-quart": "cubic-bezier(0.76, 0, 0.24, 1)",
       },
       keyframes: {
-        gradient: {
-          '0%, 100%': { 'background-position': '0% 50%' },
-          '50%': { 'background-position': '100% 50%' },
+        "fade-up": {
+          "0%": { opacity: "0", transform: "translateY(16px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        shimmer: {
-          '0%': { 'background-position': '-1000px 0' },
-          '100%': { 'background-position': '1000px 0' },
+        "draw": {
+          "0%": { "stroke-dashoffset": "1" },
+          "100%": { "stroke-dashoffset": "0" },
         },
+      },
+      animation: {
+        "fade-up": "fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
       },
     },
   },
   plugins: [],
 }
-

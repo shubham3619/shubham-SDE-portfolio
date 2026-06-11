@@ -1,65 +1,49 @@
-import { Github, Linkedin, Mail, Phone } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Github, Linkedin, Mail } from 'lucide-react'
 import { personalInfo } from '../../data/personalInfo'
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear()
+const useLocalTime = () => {
+  const [time, setTime] = useState('')
+  useEffect(() => {
+    const fmt = new Intl.DateTimeFormat('en-IN', {
+      hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Kolkata',
+    })
+    const tick = () => setTime(fmt.format(new Date()))
+    tick()
+    const id = setInterval(tick, 30_000)
+    return () => clearInterval(id)
+  }, [])
+  return time
+}
 
-  const socialLinks = [
-    {
-      name: 'GitHub',
-      icon: Github,
-      url: personalInfo.github,
-      ariaLabel: 'Visit GitHub profile',
-    },
-    {
-      name: 'LinkedIn',
-      icon: Linkedin,
-      url: personalInfo.linkedin,
-      ariaLabel: 'Visit LinkedIn profile',
-    },
-    {
-      name: 'Email',
-      icon: Mail,
-      url: `mailto:${personalInfo.email}`,
-      ariaLabel: 'Send email',
-    },
+const Footer = () => {
+  const time = useLocalTime()
+  const links = [
+    { icon: Github, url: personalInfo.github, label: 'GitHub' },
+    { icon: Linkedin, url: personalInfo.linkedin, label: 'LinkedIn' },
+    { icon: Mail, url: `mailto:${personalInfo.email}`, label: 'Email' },
   ]
 
   return (
-    <footer className="bg-gray-900 dark:bg-dark-surface text-gray-300 dark:text-gray-400 py-12 transition-colors duration-300">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-          <div className="text-center md:text-left">
-            <p className="text-lg font-semibold text-white dark:text-white mb-2">
-              Shubham Sharma
-            </p>
-            <p className="text-sm text-gray-400 dark:text-gray-500">Full-Stack MERN Developer</p>
-          </div>
-
-          <div className="flex items-center space-x-6">
-            {socialLinks.map((link) => {
-              const Icon = link.icon
-              return (
-                <a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.ariaLabel}
-                  className="text-gray-400 dark:text-gray-500 hover:text-primary-400 dark:hover:text-primary-400 transition-colors p-2 rounded-full hover:bg-gray-800 dark:hover:bg-dark-bg"
-                >
-                  <Icon size={20} />
-                </a>
-              )
-            })}
-          </div>
-        </div>
-
-        <div className="mt-8 pt-8 border-t border-gray-800 dark:border-dark-border text-center text-sm text-gray-500 dark:text-gray-600">
-          <p>
-            © {currentYear} Shubham Sharma. Built with React, Vite, and
-            Tailwind CSS.
-          </p>
+    <footer className="relative z-10 border-t border-line">
+      <div className="container-content flex flex-col items-center justify-between gap-4 py-10 sm:flex-row">
+        <p className="font-mono text-xs text-text-faint">
+          © 2026 {personalInfo.name} — built with React, Vite & Framer Motion.
+          {time && <span className="ml-3 text-text-muted">Jaipur · {time} IST</span>}
+        </p>
+        <div className="flex items-center gap-2">
+          {links.map(({ icon: Icon, url, label }) => (
+            <a
+              key={label}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="grid h-9 w-9 place-items-center rounded-md border border-line text-text-muted transition-colors hover:border-accent hover:text-accent"
+            >
+              <Icon size={16} />
+            </a>
+          ))}
         </div>
       </div>
     </footer>
@@ -67,4 +51,3 @@ const Footer = () => {
 }
 
 export default Footer
-

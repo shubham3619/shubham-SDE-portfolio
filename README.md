@@ -1,139 +1,59 @@
-# Shubham Sharma - Portfolio Website
+# Shubham Sharma — Portfolio
 
-A modern, responsive portfolio website showcasing my work as a Full-Stack MERN Developer.
+A dark, minimal, multi-page portfolio for a full-stack developer. Built to read as
+the work of an experienced engineer: deep case studies, restrained motion, and a
+small WebGL accent.
 
-## 🚀 Features
+## Stack
 
-- **Modern Design**: Clean, minimal, and professional UI
-- **Responsive**: Fully responsive design for all devices
-- **Smooth Animations**: Framer Motion animations for engaging user experience
-- **SEO Optimized**: Meta tags and structured data for better search visibility
-- **Fast Performance**: Optimized for speed and performance
-- **Accessible**: Built with accessibility best practices
+- **React 18 + Vite** — app + build
+- **React Router 6** — multi-page routing with animated transitions
+- **Tailwind CSS** — design tokens via CSS variables (dark-first)
+- **Framer Motion** — scroll reveals, page transitions, count-ups, magnetic CTAs
+- **react-three-fiber + drei** — subtle wireframe hero (lazy-loaded, reduced-motion safe)
+- **react-icons** — brand/tech logos
 
-## 🛠️ Tech Stack
-
-- **React 18** - UI library
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Animation library
-- **Lucide React** - Icon library
-
-## 📦 Installation
-
-1. Clone the repository:
-```bash
-git clone <your-repo-url>
-cd shubham-portfollio
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-```
-
-4. Open your browser and visit `http://localhost:5173`
-
-## 🏗️ Build for Production
-
-```bash
-npm run build
-```
-
-The built files will be in the `dist` directory, ready to be deployed.
-
-## 🚢 Deployment
-
-### Deploy to Vercel
-
-1. Push your code to GitHub
-2. Import your repository on [Vercel](https://vercel.com)
-3. Vercel will automatically detect Vite and configure the build settings
-4. Deploy!
-
-### Manual Deployment
-
-1. Build the project: `npm run build`
-2. Upload the `dist` folder to your hosting provider
-3. Configure your server to serve the `index.html` file for all routes (for client-side routing)
-
-## 📁 Project Structure
+## Structure
 
 ```
-shubham-portfollio/
-├── public/              # Static assets
-├── src/
-│   ├── components/
-│   │   ├── layout/      # Header, Footer
-│   │   └── sections/   # Hero, About, Skills, etc.
-│   ├── data/           # Data files (personal info, projects, etc.)
-│   ├── App.jsx         # Main app component
-│   ├── main.jsx        # Entry point
-│   └── index.css       # Global styles
-├── index.html          # HTML template
-├── package.json        # Dependencies
-├── vite.config.js     # Vite configuration
-└── tailwind.config.js # Tailwind configuration
+src/
+├── components/
+│   ├── case/        # Case-study building blocks (Pipeline, Shell, Sections)
+│   ├── common/      # Reveal, MagneticButton, CountUp, SectionHeading, ScrollProgress
+│   ├── layout/      # Header (section-aware nav), Footer
+│   ├── sections/    # Home sections: Hero, Work, ExperienceTimeline, Stack, Approach, Contact
+│   └── three/       # HeroCanvas (WebGL)
+├── data/            # Source of truth: personalInfo, experience, projects, skills, education
+├── lib/motion.js    # Shared Framer Motion variants
+├── pages/           # HomePage, AboutPage, work/EployrsPage, work/JobMailerPage, NotFoundPage
+├── App.jsx          # Routes + AnimatePresence
+└── index.css        # Design tokens + base styles
 ```
 
-## 🎨 Customization
+## Routes
 
-### Update Personal Information
+- `/` — home (hero, selected work, experience, stack, approach, contact)
+- `/work/eployrs` — Eployrs case study
+- `/work/jobmailer` — JobMailer AI case study
+- `/about` — narrative, education, certifications
 
-Edit the data files in `src/data/`:
-- `personalInfo.js` - Your personal details
-- `skills.js` - Your skills
-- `experience.js` - Work experience
-- `projects.js` - Your projects
-- `education.js` - Education details
+## Scripts
 
-### Change Colors
+- `npm run dev` — dev server
+- `npm run build` — production build (`dist/`)
+- `npm run preview` — preview the build
+- `npm run lint` — ESLint
 
-Edit `tailwind.config.js` to customize the color scheme:
+## Editing content
 
-```js
-colors: {
-  primary: {
-    // Your custom colors
-  }
-}
-```
+All content lives in `src/data/`. Update those files and the UI follows.
 
-### Add/Remove Sections
+## Design tokens
 
-1. Create a new component in `src/components/sections/`
-2. Import and add it to `src/App.jsx`
-
-## 📝 Content Updates
-
-To update content:
-1. Edit the respective data files in `src/data/`
-2. The changes will automatically reflect in the UI
-
-## 🔧 Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 👤 Author
-
-**Shubham Sharma**
-- Email: shubhamsharma3619@gmail.com
-- LinkedIn: [shubhamsharma2002](https://linkedin.com/in/shubhamsharma2002)
-- GitHub: [shubham3619](https://github.com/shubham3619)
+The palette is defined as space-separated RGB channels in `src/index.css` (`:root`)
+and exposed to Tailwind via `rgb(var(--token) / <alpha-value>)` in `tailwind.config.js`,
+so opacity modifiers (`bg-surface/60`) work. Change the accent by editing `--accent`.
 
 ---
 
-Built with ❤️ using React, Vite, and Tailwind CSS
-
+**Shubham Sharma** · [LinkedIn](https://linkedin.com/in/shubhamsharma2002) · [GitHub](https://github.com/shubham3619)
