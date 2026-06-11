@@ -1,54 +1,96 @@
 export const experience = [
   {
-    id: 1,
+    id: "kavish",
     company: "Kavish Technology Pvt Ltd",
-    role: "Software Developer Engineer",
-    location: "Jaipur, Rajasthan",
-    duration: "July 2024 – Present",
+    role: "Full-Stack Developer",
+    location: "Remote · Jaipur",
+    duration: "Jan 2024 – Present",
     type: "Full-time",
-    achievements: [
-      "Developing Eployrs, a scalable job-tech platform",
-      "Built fast, reliable APIs using Node.js & Express.js",
-      "Designed and implemented Role-Based Access Control (RBAC)",
-      "Implemented Single Sign-On (SSO) authentication",
-      "Integrated Husky for pre-commit and pre-push checks",
-      "Improved code quality and prevented faulty commits",
+    summary:
+      "Architected and delivered Eployrs — an AI-powered, multi-tenant recruitment SaaS — across recruiter, candidate, organization, and admin surfaces.",
+    product: "Eployrs",
+    productUrl: "https://eployrs.com",
+    caseStudy: "/work/eployrs",
+
+    // Achievements grouped into themed clusters (reads senior vs. a flat bullet list)
+    clusters: [
+      {
+        title: "AI Pre-screening & Matching",
+        icon: "brain",
+        points: [
+          "Built an AI-driven pre-screening interview engine: candidates record video interviews stored on AWS S3 by session ID, with Lambda functions triggering automated AI analysis pipelines that generate structured scorecards and weakness-feedback reports.",
+          "Engineered an AI candidate–job matching system with percentage fit scoring, NLP-powered resume parsing, geo-proximity candidate search, and a Talent Outreach module that ranks recommendations from a job description.",
+        ],
+      },
+      {
+        title: "Multi-tenant SSO & Security",
+        icon: "shield",
+        points: [
+          "Designed a multi-tenant SSO system using OIDC, JWT, PKCE, and JWKS with per-organization GCP credential configuration.",
+          "Built a Super Admin portal with dynamic database connection switching for strict per-tenant data isolation and RBAC across Super Admin, Admin, and Marketing roles.",
+          "Added a user-activity tracking & anomaly-detection module — session monitoring, suspicious-login flagging, and authentication audit logs.",
+        ],
+      },
+      {
+        title: "Async Provisioning & Integrations",
+        icon: "queue",
+        points: [
+          "Developed a bulk user-provisioning pipeline on RabbitMQ message queues with dynamic PDF generation and automated email delivery.",
+          "Integrated Google Meet & Microsoft Teams APIs for in-platform interview scheduling, plus organization-level monitoring dashboards and recruiter availability management — eliminating manual coordination.",
+          "Integrated the WhatsApp Business API for promotional and lead-nurturing campaigns, and a cron-based job-notification system for personalized match alerts.",
+        ],
+      },
+      {
+        title: "Performance & Payments",
+        icon: "gauge",
+        points: [
+          "Optimized backend performance with Redis caching and MongoDB compound indexing, reducing critical API response times by 40%+.",
+          "Integrated the Cashfree payment gateway with HMAC-SHA256 webhook verification, idempotency controls, and dynamic enterprise pricing plans.",
+        ],
+      },
     ],
+
     techStack: [
       "React",
-      "Redux Toolkit",
+      "TypeScript",
       "Node.js",
       "MongoDB",
       "Redis",
-      "JWT",
-      "Microservices",
+      "RabbitMQ",
+      "AWS S3",
+      "AWS Lambda",
+      "OIDC / PKCE",
     ],
-    product: "Eployrs.com",
-    productUrl: "https://eployrs.com",
   },
   {
-    id: 2,
+    id: "itraction",
     company: "iTraction",
     role: "Software Engineer Intern",
     location: "Jaipur, Rajasthan",
-    duration: "January 2024 – June 2024",
+    duration: "Sept 2023 – Dec 2023",
     type: "Internship",
-    achievements: [
-      "Worked on Vuelitos, a flight-booking platform",
-      "Improved API performance via Prisma ORM query optimization",
-      "Implemented caching strategies for better performance",
-      "Built real-time flight tracking using WebSockets",
-      "Developed responsive booking UI using React & Material-UI",
+    summary:
+      "Developed and maintained Vuelitos — a full-featured flight-booking platform for travel to and from Venezuela — on the complete MERN stack with real-time capabilities.",
+    product: "Vuelitos",
+    productUrl: "https://www.vuelitos.com/",
+
+    // Shorter role → flat points instead of themed clusters
+    points: [
+      "Optimized API performance using Prisma ORM and intelligent caching strategies, significantly reducing response latency under high-traffic conditions.",
+      "Implemented real-time flight tracking with WebSockets, delivering live updates to users with sub-second latency.",
+      "Built a responsive, accessible booking UI with React, HTML5, CSS3, and Material-UI — cross-browser and cross-device compatible.",
+      "Improved state-management architecture with Redux Toolkit, eliminating redundant re-renders and lifting frontend performance.",
+      "Followed modern Git workflows — feature branching, PR reviews, and CI/CD pipelines — for seamless deployments.",
     ],
+
     techStack: [
-      "MERN Stack",
-      "TypeScript",
+      "React",
+      "Node.js",
       "Prisma ORM",
       "WebSockets",
-      "Firebase",
+      "Redux Toolkit",
+      "Material-UI",
+      "CI/CD",
     ],
-    product: "Vuelitos.com",
-    productUrl: "https://vuelitos.com",
   },
 ]
-

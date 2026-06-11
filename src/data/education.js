@@ -1,19 +1,25 @@
 export const education = [
   {
-    id: 1,
-    degree: "Bachelor of Science",
-    university: "University of Kota",
-    location: "Kota, Rajasthan",
-    duration: "September 2019 – July 2022",
-    stream: null,
+    id: "bsc",
+    degree: "B.Sc",
+    detail: "Percentage: 75%",
+    focus: "Data Structures, Algorithms, OOP",
+    university: "Kota University",
+    duration: "2018 – 2022",
   },
   {
-    id: 2,
-    degree: "Senior Secondary (12th)",
-    board: "RBSE",
-    location: "Rajasthan",
-    year: "2018",
-    stream: "Computer Science",
+    id: "senior-secondary",
+    degree: "Senior Secondary — Computer Science",
+    focus: "Programming Fundamentals & Computer Systems",
+    university: "RBSE Board",
+    duration: null,
   },
 ]
 
+export const certifications = [
+  {
+    id: "acciojob",
+    name: "Full-Stack Development Certification",
+    issuer: "AccioJob",
+  },
+]
